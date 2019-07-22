@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneBook_DbLayer.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,15 @@ namespace PhoneBook.App
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            BindGrid();
+        }
 
+        private void BindGrid()
+        {
+            using (ContextManager db = new ContextManager())
+            {
+                dgUsers.DataSource = db.UserRepository.GetAllContacts();
+            }
         }
     }
 }

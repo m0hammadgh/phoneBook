@@ -125,6 +125,7 @@
             this.dgUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgUsers.Location = new System.Drawing.Point(0, 25);
             this.dgUsers.Name = "dgUsers";
+            this.dgUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgUsers.Size = new System.Drawing.Size(800, 425);
             this.dgUsers.TabIndex = 1;
             // 
