@@ -11,7 +11,7 @@ namespace PhoneBook_DbLayer
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class User
     {
         public int UserId { get; set; }
@@ -24,5 +24,7 @@ namespace PhoneBook_DbLayer
         public string Email { get; set; }
         public string ProfilePic { get; set; }
         public string CityCode { get; set; }
+
+        public List<MobileNumbers> mobileNumbers { get; set; }
     }
 }

@@ -39,6 +39,15 @@
             this.tvSearchKeyWord = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.dgUsers = new System.Windows.Forms.DataGridView();
+            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserNationalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HomeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CityCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +62,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(844, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,6 +91,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(180, 22);
             this.btnDelete.Text = "حذف مخاطب";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // brnEdit
             // 
@@ -94,6 +104,7 @@
             this.btnSync.Name = "btnSync";
             this.btnSync.Size = new System.Drawing.Size(180, 22);
             this.btnSync.Text = "به روز رسانی";
+            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
             // brnSearch
             // 
@@ -109,6 +120,7 @@
             this.tvSearchKeyWord.Name = "tvSearchKeyWord";
             this.tvSearchKeyWord.Size = new System.Drawing.Size(200, 25);
             this.tvSearchKeyWord.Text = "کلمه مورد جست و جو";
+            this.tvSearchKeyWord.TextChanged += new System.EventHandler(this.tvSearchKeyWord_TextChanged);
             // 
             // toolStripButton1
             // 
@@ -121,23 +133,104 @@
             // 
             // dgUsers
             // 
+            this.dgUsers.AllowUserToAddRows = false;
+            this.dgUsers.AllowUserToDeleteRows = false;
+            this.dgUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UserId,
+            this.UserName,
+            this.UserLastName,
+            this.UserNationalCode,
+            this.BirthDate,
+            this.HomeNumber,
+            this.Address,
+            this.Email,
+            this.CityCode});
             this.dgUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgUsers.Location = new System.Drawing.Point(0, 25);
             this.dgUsers.Name = "dgUsers";
+            this.dgUsers.ReadOnly = true;
             this.dgUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dgUsers.Size = new System.Drawing.Size(800, 425);
+            this.dgUsers.Size = new System.Drawing.Size(844, 536);
             this.dgUsers.TabIndex = 1;
+            // 
+            // UserId
+            // 
+            this.UserId.DataPropertyName = "UserId";
+            this.UserId.HeaderText = "ای دی";
+            this.UserId.Name = "UserId";
+            this.UserId.ReadOnly = true;
+            this.UserId.Visible = false;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "Name";
+            this.UserName.HeaderText = "نام";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // UserLastName
+            // 
+            this.UserLastName.DataPropertyName = "LastName";
+            this.UserLastName.HeaderText = "نام خانوادگی";
+            this.UserLastName.Name = "UserLastName";
+            this.UserLastName.ReadOnly = true;
+            // 
+            // UserNationalCode
+            // 
+            this.UserNationalCode.DataPropertyName = "NationalCode";
+            this.UserNationalCode.HeaderText = "کد ملی";
+            this.UserNationalCode.Name = "UserNationalCode";
+            this.UserNationalCode.ReadOnly = true;
+            // 
+            // BirthDate
+            // 
+            this.BirthDate.DataPropertyName = "BirthDate";
+            this.BirthDate.HeaderText = "تاریخ تولد";
+            this.BirthDate.Name = "BirthDate";
+            this.BirthDate.ReadOnly = true;
+            // 
+            // HomeNumber
+            // 
+            this.HomeNumber.DataPropertyName = "HomeNumber";
+            this.HomeNumber.HeaderText = "شماره منزل";
+            this.HomeNumber.Name = "HomeNumber";
+            this.HomeNumber.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "ادرس";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "ایمیل";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // CityCode
+            // 
+            this.CityCode.DataPropertyName = "CityCode";
+            this.CityCode.HeaderText = "کد شهر";
+            this.CityCode.Name = "CityCode";
+            this.CityCode.ReadOnly = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(844, 561);
             this.Controls.Add(this.dgUsers);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "دفترچه تلفن";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -159,6 +252,15 @@
         private System.Windows.Forms.ToolStripTextBox tvSearchKeyWord;
         private System.Windows.Forms.ToolStripButton brnSearch;
         private System.Windows.Forms.DataGridView dgUsers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserNationalCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HomeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CityCode;
     }
 }
 

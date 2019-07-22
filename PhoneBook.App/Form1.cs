@@ -27,7 +27,47 @@ namespace PhoneBook.App
         {
             using (ContextManager db = new ContextManager())
             {
+                dgUsers.AutoGenerateColumns = false;
                 dgUsers.DataSource = db.UserRepository.GetAllContacts();
+            }
+        }
+
+        private void tvSearchKeyWord_TextChanged(object sender, EventArgs e)
+        {
+            using (ContextManager db = new ContextManager())
+            {
+                dgUsers.AutoGenerateColumns = false;
+                dgUsers.DataSource = db.UserRepository.getUserByFilter(tvSearchKeyWord.Text);
+            }
+        }
+
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            tvSearchKeyWord.Text = "";
+            BindGrid();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgUsers.CurrentRow != null)
+            {
+                String name = dgUsers.CurrentRow.Cells[1].Value.ToString() +" " +dgUsers.CurrentRow.Cells[2].Value.ToString();
+                if (RtlMessageBox.Show($"ایا از حذف  {name} اطمینان دارید ؟ ", "توجه", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) 
+                    == DialogResult.Yes)
+                {
+                    int cutomerId = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
+                    using (ContextManager db = new ContextManager())
+                    {
+                        db.UserRepository.DeleteContact(cutomerId);
+                        db.saveChanges();
+                        BindGrid();
+                    }
+                }
+               
+            }
+            else
+            {
+                RtlMessageBox.Show("رکورد مورد نظر را انتخاب کنید");
             }
         }
     }

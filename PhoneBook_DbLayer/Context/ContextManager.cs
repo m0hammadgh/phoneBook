@@ -26,7 +26,10 @@ namespace PhoneBook_DbLayer.Context
 
             }
         }
-
+        public void saveChanges()
+        {
+            db.SaveChanges();
+        }
         public void Dispose()
         {
             db.Dispose();

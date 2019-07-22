@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddContact.Designer.cs">
+      <DependentUpon>AddContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddContact.resx">
+      <DependentUpon>AddContact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +98,10 @@
     <ProjectReference Include="..\PhoneBook_DbLayer\PhoneBook_DbLayer.csproj">
       <Project>{ea565f44-20df-4b73-9112-c9f304ac7361}</Project>
       <Name>PhoneBook_DbLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhoneBook_Utilities\PhoneBook_Utilities.csproj">
+      <Project>{5913ed26-a27a-4dc9-8e37-0ac8592c50d4}</Project>
+      <Name>PhoneBook_Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

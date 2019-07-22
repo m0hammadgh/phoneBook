@@ -70,10 +70,12 @@ namespace PhoneBook_DbLayer.Services
             return db.User.Find(userId);
         }
 
-        public void SaveChanges()
+        public IEnumerable<User> getUserByFilter(string pparam)
         {
-            db.SaveChanges();
+            return db.User.Where(u => u.Name.Contains(pparam) || u.LastName.Contains(pparam) || u.NationalCode.Contains(pparam)).ToList();
         }
+
+     
 
         public void SendSMS()
         {

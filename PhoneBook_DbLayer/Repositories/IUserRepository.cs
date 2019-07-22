@@ -20,8 +20,9 @@ namespace PhoneBook_DbLayer.Repositories
 
         bool DeleteContact(int userId);
 
-        void SaveChanges();
 
         void SendSMS();
+
+        IEnumerable<User> getUserByFilter(String pparam);
     }
 }
