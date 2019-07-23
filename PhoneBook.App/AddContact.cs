@@ -18,6 +18,8 @@ namespace PhoneBook.App
     public partial class AddContact : Form
     {
         public int userId = 0;
+        public int tvId = 0;
+        private List<TextBox> tvNumbersList = new List<TextBox>();
         public AddContact()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace PhoneBook.App
                     }
                     else
                     {
-                        db.UserRepository.UpdateContact(CreateEdituser());
+                        db.UserRepository.UpdateContact(CreateSampleEditableUser());
                     }
                     db.saveChanges();
                 }
@@ -63,21 +65,30 @@ namespace PhoneBook.App
             }
         }
 
-        private User CreateSampleuser() => new User
+        private User CreateSampleuser()
+
         {
-            Address = tvAddress.Text,
-            CityCode = tvCityCode.Text,
-            Email = tvEmail.Text,
-            HomeNumber = tvHomePhone.Text,
-            Name = tvName.Text,
-            LastName = tvLastName.Text,
-            NationalCode = tvNationalCode.Text,
-            BirthDate = dtPicker.Value,
-            ProfilePic = "noImage.jpg"
+            var count = getMobileNumbers().Count;
+
+            User user=new  User()
+            {
+                Address = tvAddress.Text,
+                CityCode = tvCityCode.Text,
+                Email = tvEmail.Text,
+                HomeNumber = tvHomePhone.Text,
+                Name = tvName.Text,
+                LastName = tvLastName.Text,
+                NationalCode = tvNationalCode.Text,
+                BirthDate = dtPicker.Value,
+                ProfilePic = "noImage.jpg"
+            };
 
 
-        };
-        private User CreateEdituser() => new User
+            return user;
+
+
+        }
+        private User CreateSampleEditableUser() => new User
         {
             UserId = userId,
             Address = tvAddress.Text,
@@ -117,6 +128,26 @@ namespace PhoneBook.App
             tvLastName.Text = user.LastName;
             tvName.Text = user.Name;
             tvNationalCode.Text = user.NationalCode;
+        }
+
+        private void btnAddMobileNumber_Click(object sender, EventArgs e)
+        {
+            TextBox textBox = new TextBox();
+            textBox.Name = "textBox" + tvId;
+            panelNumbers.Controls.Add(textBox);
+            tvNumbersList.Add(textBox);
+
+        }
+
+        public List<String> getMobileNumbers()
+        {
+            List<String> numbers = new List<string>();
+            for (int i1 = 0; i1 < tvNumbersList.Count; i1++)
+            {
+                TextBox i = tvNumbersList[i1];
+                numbers.Add(i.Text);
+            }
+            return numbers;
         }
     }
 }

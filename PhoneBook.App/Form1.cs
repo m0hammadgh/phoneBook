@@ -21,10 +21,6 @@ namespace PhoneBook.App
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            using (ContextManager db = new ContextManager())
-            {
-                IEnumerable<PhoneBook_ViewModels.User.ListUserViewModel> items = db.UserRepository.GetNumbersByUser(11);
-            }
             BindGrid();
         }
 
@@ -92,7 +88,7 @@ namespace PhoneBook.App
                 int userid = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
                 AddContact addContact = new AddContact();
                 addContact.userId = userid;
-                if (addContact.ShowDialog()==DialogResult.OK)
+                if (addContact.ShowDialog() == DialogResult.OK)
                 {
                     BindGrid();
                 }
