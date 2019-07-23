@@ -85,6 +85,7 @@
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(180, 22);
             this.btnAddUser.Text = "افزودن مخاطب";
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnDelete
             // 
@@ -98,6 +99,7 @@
             this.brnEdit.Name = "brnEdit";
             this.brnEdit.Size = new System.Drawing.Size(180, 22);
             this.brnEdit.Text = "ویرایش مخاطب";
+            this.brnEdit.Click += new System.EventHandler(this.brnEdit_Click);
             // 
             // btnSync
             // 

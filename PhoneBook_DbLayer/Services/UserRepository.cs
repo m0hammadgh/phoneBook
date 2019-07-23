@@ -75,7 +75,7 @@ namespace PhoneBook_DbLayer.Services
             return db.User.Where(u => u.Name.Contains(pparam) || u.LastName.Contains(pparam) || u.NationalCode.Contains(pparam)).ToList();
         }
 
-     
+
 
         public void SendSMS()
         {
@@ -86,6 +86,13 @@ namespace PhoneBook_DbLayer.Services
         {
             try
             {
+                var local = db.Set<User>()
+                            .Local
+                            .FirstOrDefault(f => f.UserId == user.UserId);
+                if (local != null)
+                {
+                    db.Entry(local).State = EntityState.Detached;
+                }
                 db.Entry(user).State = EntityState.Modified;
                 return true;
             }

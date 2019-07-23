@@ -13,6 +13,7 @@ namespace PhoneBook.App
 {
     public partial class frmMain : Form
     {
+
         public frmMain()
         {
             InitializeComponent();
@@ -51,8 +52,8 @@ namespace PhoneBook.App
         {
             if (dgUsers.CurrentRow != null)
             {
-                String name = dgUsers.CurrentRow.Cells[1].Value.ToString() +" " +dgUsers.CurrentRow.Cells[2].Value.ToString();
-                if (RtlMessageBox.Show($"ایا از حذف  {name} اطمینان دارید ؟ ", "توجه", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) 
+                String name = dgUsers.CurrentRow.Cells[1].Value.ToString() + " " + dgUsers.CurrentRow.Cells[2].Value.ToString();
+                if (RtlMessageBox.Show($"ایا از حذف  {name} اطمینان دارید ؟ ", "توجه", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                     == DialogResult.Yes)
                 {
                     int cutomerId = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
@@ -63,7 +64,36 @@ namespace PhoneBook.App
                         BindGrid();
                     }
                 }
-               
+
+            }
+            else
+            {
+                RtlMessageBox.Show("رکورد مورد نظر را انتخاب کنید");
+            }
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            AddContact addContact = new AddContact();
+            if (addContact.ShowDialog() == DialogResult.OK)
+            {
+                BindGrid();
+            }
+
+        }
+
+        private void brnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgUsers.CurrentRow != null)
+            {
+                int userid = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
+                AddContact addContact = new AddContact();
+                addContact.userId = userid;
+                if (addContact.ShowDialog()==DialogResult.OK)
+                {
+                    BindGrid();
+                }
+
             }
             else
             {

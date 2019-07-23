@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\UserRepository.cs" />
     <Compile Include="User.cs">
       <DependentUpon>ContactModel.tt</DependentUpon>

@@ -28,51 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddContact));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtPicker = new System.Windows.Forms.DateTimePicker();
+            this.tvCityCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tvHomePhone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tvAddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tvEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tvLastName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tvName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.btnSelectPic = new System.Windows.Forms.Button();
+            this.pcUser = new System.Windows.Forms.PictureBox();
+            this.tvMobileNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator3 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.tvNationalCode = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.dtPicker);
+            this.groupBox1.Controls.Add(this.tvCityCode);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.tvHomePhone);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.tvAddress);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.tvEmail);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tvLastName);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tvName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(407, 13);
             this.groupBox1.Name = "groupBox1";
@@ -81,28 +86,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات شخصی";
             // 
-            // textBox7
+            // btnSave
             // 
-            this.textBox7.Location = new System.Drawing.Point(115, 343);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(242, 20);
-            this.textBox7.TabIndex = 13;
+            this.btnSave.Location = new System.Drawing.Point(6, 402);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(375, 23);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "ذخیره";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(340, 326);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "نام";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(307, 339);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "تاریخ تولد";
             // 
-            // textBox6
+            // dtPicker
             // 
-            this.textBox6.Location = new System.Drawing.Point(115, 299);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(242, 20);
-            this.textBox6.TabIndex = 11;
+            this.dtPicker.Location = new System.Drawing.Point(115, 366);
+            this.dtPicker.Name = "dtPicker";
+            this.dtPicker.Size = new System.Drawing.Size(242, 20);
+            this.dtPicker.TabIndex = 17;
+            // 
+            // tvCityCode
+            // 
+            this.tvCityCode.Location = new System.Drawing.Point(115, 299);
+            this.tvCityCode.Name = "tvCityCode";
+            this.tvCityCode.Size = new System.Drawing.Size(242, 20);
+            this.tvCityCode.TabIndex = 11;
             // 
             // label6
             // 
@@ -113,12 +128,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "کد شهر";
             // 
-            // textBox5
+            // tvHomePhone
             // 
-            this.textBox5.Location = new System.Drawing.Point(115, 251);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(242, 20);
-            this.textBox5.TabIndex = 9;
+            this.tvHomePhone.Location = new System.Drawing.Point(115, 251);
+            this.tvHomePhone.Name = "tvHomePhone";
+            this.tvHomePhone.Size = new System.Drawing.Size(242, 20);
+            this.tvHomePhone.TabIndex = 9;
             // 
             // label5
             // 
@@ -129,12 +144,12 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "تلفن منزل";
             // 
-            // textBox4
+            // tvAddress
             // 
-            this.textBox4.Location = new System.Drawing.Point(115, 199);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(242, 20);
-            this.textBox4.TabIndex = 7;
+            this.tvAddress.Location = new System.Drawing.Point(115, 199);
+            this.tvAddress.Name = "tvAddress";
+            this.tvAddress.Size = new System.Drawing.Size(242, 20);
+            this.tvAddress.TabIndex = 7;
             // 
             // label4
             // 
@@ -145,12 +160,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "آدرس";
             // 
-            // textBox3
+            // tvEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(115, 152);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(242, 20);
-            this.textBox3.TabIndex = 5;
+            this.tvEmail.Location = new System.Drawing.Point(115, 152);
+            this.tvEmail.Name = "tvEmail";
+            this.tvEmail.Size = new System.Drawing.Size(242, 20);
+            this.tvEmail.TabIndex = 5;
             // 
             // label3
             // 
@@ -161,12 +176,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "ایمیل";
             // 
-            // textBox2
+            // tvLastName
             // 
-            this.textBox2.Location = new System.Drawing.Point(115, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(242, 20);
-            this.textBox2.TabIndex = 3;
+            this.tvLastName.Location = new System.Drawing.Point(115, 100);
+            this.tvLastName.Name = "tvLastName";
+            this.tvLastName.Size = new System.Drawing.Size(242, 20);
+            this.tvLastName.TabIndex = 3;
             // 
             // label2
             // 
@@ -177,12 +192,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "نام خانوادگی";
             // 
-            // textBox1
+            // tvName
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(242, 20);
-            this.textBox1.TabIndex = 1;
+            this.tvName.Location = new System.Drawing.Point(115, 50);
+            this.tvName.Name = "tvName";
+            this.tvName.Size = new System.Drawing.Size(242, 20);
+            this.tvName.TabIndex = 1;
             // 
             // label1
             // 
@@ -195,8 +210,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.btnSelectPic);
+            this.groupBox2.Controls.Add(this.pcUser);
             this.groupBox2.Location = new System.Drawing.Point(13, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(216, 198);
@@ -204,20 +219,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "تصویر کاربر";
             // 
-            // pictureBox1
+            // btnSelectPic
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 126);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.btnSelectPic.Location = new System.Drawing.Point(6, 161);
+            this.btnSelectPic.Name = "btnSelectPic";
+            this.btnSelectPic.Size = new System.Drawing.Size(204, 23);
+            this.btnSelectPic.TabIndex = 1;
+            this.btnSelectPic.Text = "انتخاب عکس";
+            this.btnSelectPic.UseVisualStyleBackColor = true;
+            this.btnSelectPic.Click += new System.EventHandler(this.btnSelectPic_Click);
             // 
-            // textBox8
+            // pcUser
             // 
-            this.textBox8.Location = new System.Drawing.Point(135, 248);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(242, 20);
-            this.textBox8.TabIndex = 15;
+            this.pcUser.Image = global::PhoneBook.App.Properties.Resources.no_profile_image;
+            this.pcUser.Location = new System.Drawing.Point(6, 29);
+            this.pcUser.Name = "pcUser";
+            this.pcUser.Size = new System.Drawing.Size(204, 126);
+            this.pcUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcUser.TabIndex = 0;
+            this.pcUser.TabStop = false;
+            // 
+            // tvMobileNumber
+            // 
+            this.tvMobileNumber.Location = new System.Drawing.Point(135, 248);
+            this.tvMobileNumber.Name = "tvMobileNumber";
+            this.tvMobileNumber.Size = new System.Drawing.Size(242, 20);
+            this.tvMobileNumber.TabIndex = 15;
             // 
             // label8
             // 
@@ -228,31 +255,6 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "شماره موبایل";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "انتخاب عکس";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(307, 366);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "تاریخ تولد";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 382);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(242, 20);
-            this.dateTimePicker1.TabIndex = 17;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(19, 248);
@@ -262,23 +264,63 @@
             this.button2.Text = "+";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator1.ControlToValidate = this.tvName;
+            this.requiredFieldValidator1.ErrorMessage = "نام را وارد کنید";
+            this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator2.ControlToValidate = this.tvLastName;
+            this.requiredFieldValidator2.ErrorMessage = "نام خانوادگی را وارد کنید";
+            this.requiredFieldValidator2.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator2.Icon")));
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator3.ControlToValidate = this.tvMobileNumber;
+            this.requiredFieldValidator3.ErrorMessage = "موبایل را وارد کنید";
+            this.requiredFieldValidator3.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator3.Icon")));
+            // 
+            // tvNationalCode
+            // 
+            this.tvNationalCode.Location = new System.Drawing.Point(247, 63);
+            this.tvNationalCode.Name = "tvNationalCode";
+            this.tvNationalCode.Size = new System.Drawing.Size(154, 20);
+            this.tvNationalCode.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(335, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "کدملی";
+            // 
             // AddContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tvNationalCode);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.tvMobileNumber);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddContact";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "AddContact";
+            this.Load += new System.EventHandler(this.AddContact_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,27 +329,31 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tvCityCode;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tvHomePhone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tvAddress;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tvEmail;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tvLastName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tvName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.PictureBox pcUser;
+        private System.Windows.Forms.TextBox tvMobileNumber;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSelectPic;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtPicker;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator2;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator3;
+        private System.Windows.Forms.TextBox tvNationalCode;
+        private System.Windows.Forms.Label label7;
     }
 }
