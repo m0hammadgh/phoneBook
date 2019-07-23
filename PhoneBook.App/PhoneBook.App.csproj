@@ -134,6 +134,10 @@
       <Project>{5913ed26-a27a-4dc9-8e37-0ac8592c50d4}</Project>
       <Name>PhoneBook_Utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhoneBook_ViewModels\PhoneBook_ViewModels.csproj">
+      <Project>{F9FC9BB6-2632-428E-8117-6EC091EC9202}</Project>
+      <Name>PhoneBook_ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\no-profile-image.gif" />

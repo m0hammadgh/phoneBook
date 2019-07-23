@@ -21,6 +21,10 @@ namespace PhoneBook.App
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            using (ContextManager db = new ContextManager())
+            {
+                IEnumerable<PhoneBook_ViewModels.User.ListUserViewModel> items = db.UserRepository.GetNumbersByUser(11);
+            }
             BindGrid();
         }
 
@@ -64,7 +68,6 @@ namespace PhoneBook.App
                         BindGrid();
                     }
                 }
-
             }
             else
             {

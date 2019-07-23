@@ -70,6 +70,9 @@
     <Compile Include="MobileNumbers.cs">
       <DependentUpon>ContactModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Numbers.cs">
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\GenericRepository.cs" />
@@ -105,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook_ViewModels\PhoneBook_ViewModels.csproj">
+      <Project>{f9fc9bb6-2632-428e-8117-6ec091ec9202}</Project>
+      <Name>PhoneBook_ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

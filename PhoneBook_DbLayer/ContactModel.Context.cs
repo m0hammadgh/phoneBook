@@ -27,5 +27,6 @@ namespace PhoneBook_DbLayer
     
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<MobileNumbers> MobileNumbers { get; set; }
+        public virtual DbSet<Numbers> Numbers { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace PhoneBook_DbLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class MobileNumbers
+    public partial class Numbers
     {
-        public int NumberId { get; set; }
-        public int UserId { get; set; }
-        public string Number { get; set; }
+        public int Id { get; set; }
+        public int userId { get; set; }
+        public string number { get; set; }
     
         public virtual User User { get; set; }
     }

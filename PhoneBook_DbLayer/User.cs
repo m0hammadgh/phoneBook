@@ -11,9 +11,16 @@ namespace PhoneBook_DbLayer
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.MobileNumbers = new HashSet<MobileNumbers>();
+            this.Numbers = new HashSet<Numbers>();
+        }
+    
         public int UserId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -24,7 +31,10 @@ namespace PhoneBook_DbLayer
         public string Email { get; set; }
         public string ProfilePic { get; set; }
         public string CityCode { get; set; }
-
-        public List<MobileNumbers> mobileNumbers { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MobileNumbers> MobileNumbers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Numbers> Numbers { get; set; }
     }
 }

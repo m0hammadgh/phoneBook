@@ -1,4 +1,5 @@
 ﻿using PhoneBook_DbLayer.Repositories;
+using PhoneBook_ViewModels.User;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,6 +20,7 @@ namespace PhoneBook_DbLayer.Services
 
         public bool AddNewContact(User user)
         {
+         
             try
             {
                 db.User.Add(user);
@@ -68,6 +70,16 @@ namespace PhoneBook_DbLayer.Services
         public User GetContactById(int userId)
         {
             return db.User.Find(userId);
+        }
+
+        public IEnumerable<ListUserViewModel> GetNumbersByUser(int userId)
+        {
+          
+
+            return db.Numbers.Where(u => u.userId.Equals(userId)).Select(u => new ListUserViewModel
+            {
+                Numbers = u.number
+            }).ToList();
         }
 
         public IEnumerable<User> getUserByFilter(string pparam)

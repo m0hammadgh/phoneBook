@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneBook_ViewModels.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,8 @@ namespace PhoneBook_DbLayer.Repositories
         void SendSMS();
 
         IEnumerable<User> getUserByFilter(String pparam);
+
+        IEnumerable<ListUserViewModel> GetNumbersByUser(int userId);
+
     }
 }

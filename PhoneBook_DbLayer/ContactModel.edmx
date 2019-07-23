@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Contact_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Contact_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MobileNumbers">
@@ -15,6 +15,14 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
           <Property Name="NumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Number" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Numbers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -31,7 +39,32 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
           <Property Name="ProfilePic" Type="varchar" MaxLength="150" />
           <Property Name="CityCode" Type="varchar" MaxLength="150" />
         </EntityType>
+        <Association Name="FK_MobileNumbers_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MobileNumbers" Type="Self.MobileNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MobileNumbers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Numbers_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Numbers" Type="Self.Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Numbers">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Contact_DBModelStoreContainer">
+          <EntitySet Name="Numbers" EntityType="Self.Numbers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MobileNumbers" EntityType="Self.MobileNumbers" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -40,9 +73,16 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
     [MobileNumbers].[Number] AS [Number]
     FROM [dbo].[MobileNumbers] AS [MobileNumbers]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_MobileNumbers_User" Association="Self.FK_MobileNumbers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MobileNumbers" EntitySet="MobileNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Numbers_User" Association="Self.FK_Numbers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Numbers" EntitySet="Numbers" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Contact_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -60,6 +100,8 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="ProfilePic" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CityCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MobileNumbers" Relationship="Contact_DBModel.FK_MobileNumbers_User" FromRole="User" ToRole="MobileNumbers" />
+          <NavigationProperty Name="Numbers" Relationship="Contact_DBModel.FK_Numbers_User" FromRole="User" ToRole="Numbers" />
         </EntityType>
         <EntityType Name="MobileNumbers">
           <Key>
@@ -69,11 +111,54 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
           <Property Name="NumberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Contact_DBModel.FK_MobileNumbers_User" FromRole="MobileNumbers" ToRole="User" />
         </EntityType>
         <EntityContainer Name="Contact_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="MobileNumbers" EntityType="Self.MobileNumbers" />
+          <AssociationSet Name="FK_MobileNumbers_User" Association="Contact_DBModel.FK_MobileNumbers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MobileNumbers" EntitySet="MobileNumbers" />
+          </AssociationSet>
+          <EntitySet Name="Numbers" EntityType="Contact_DBModel.Numbers" />
+          <AssociationSet Name="FK_Numbers_User" Association="Contact_DBModel.FK_Numbers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Numbers" EntitySet="Numbers" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_MobileNumbers_User">
+          <End Type="Contact_DBModel.User" Role="User" Multiplicity="1" />
+          <End Type="Contact_DBModel.MobileNumbers" Role="MobileNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MobileNumbers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Numbers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Contact_DBModel.FK_Numbers_User" FromRole="Numbers" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Numbers_User">
+          <End Type="Contact_DBModel.User" Role="User" Multiplicity="1" />
+          <End Type="Contact_DBModel.Numbers" Role="Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Numbers">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -102,6 +187,15 @@ warning 6002: The table/view 'Contact_DB.dbo.MobileNumbers' does not have a prim
                 <ScalarProperty Name="NumberId" ColumnName="NumberId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Numbers">
+            <EntityTypeMapping TypeName="Contact_DBModel.Numbers">
+              <MappingFragment StoreEntitySet="Numbers">
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

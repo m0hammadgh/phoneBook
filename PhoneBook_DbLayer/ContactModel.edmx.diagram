@@ -7,6 +7,9 @@
       <Diagram DiagramId="9b2dc4e1169243879a6947be6aff743a" Name="Diagram1">
         <EntityTypeShape EntityType="Contact_DBModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Contact_DBModel.MobileNumbers" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Contact_DBModel.FK_MobileNumbers_User" />
+        <EntityTypeShape EntityType="Contact_DBModel.Numbers" Width="1.5" PointX="3" PointY="3.5" />
+        <AssociationConnector Association="Contact_DBModel.FK_Numbers_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
