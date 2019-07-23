@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook_DbLayer.Services
 {
@@ -20,7 +18,7 @@ namespace PhoneBook_DbLayer.Services
 
         public bool AddNewContact(User user)
         {
-         
+
             try
             {
                 db.User.Add(user);
@@ -47,11 +45,12 @@ namespace PhoneBook_DbLayer.Services
             }
         }
 
+
         public bool DeleteContact(int userId)
         {
             try
             {
-                var user = GetContactById(userId);
+                User user = GetContactById(userId);
                 DeleteContact(user);
                 return true;
             }
@@ -60,6 +59,17 @@ namespace PhoneBook_DbLayer.Services
 
                 return false;
             }
+        }
+
+        public bool DeleteNumber(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteNumber(Numbers number)
+        {
+            db.Entry(number).State = EntityState.Deleted;
+            return true;
         }
 
         public List<User> GetAllContacts()
@@ -74,12 +84,17 @@ namespace PhoneBook_DbLayer.Services
 
         public IEnumerable<ListUserViewModel> GetNumbersByUser(int userId)
         {
-          
+
 
             return db.Numbers.Where(u => u.userId.Equals(userId)).Select(u => new ListUserViewModel
             {
                 Numbers = u.number
             }).ToList();
+        }
+
+        public Numbers GetNumbersByUserId(int userId)
+        {
+            return db.Numbers.Where(n => n.userId.Equals(userId));
         }
 
         public IEnumerable<User> getUserByFilter(string pparam)
@@ -98,7 +113,7 @@ namespace PhoneBook_DbLayer.Services
         {
             try
             {
-                var local = db.Set<User>()
+                User local = db.Set<User>()
                             .Local
                             .FirstOrDefault(f => f.UserId == user.UserId);
                 if (local != null)

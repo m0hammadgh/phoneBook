@@ -59,6 +59,8 @@ namespace PhoneBook.App
                     int cutomerId = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
                     using (ContextManager db = new ContextManager())
                     {
+                       
+
                         db.UserRepository.DeleteContact(cutomerId);
                         db.saveChanges();
                         BindGrid();

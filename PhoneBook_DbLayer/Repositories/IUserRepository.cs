@@ -1,9 +1,5 @@
 ﻿using PhoneBook_ViewModels.User;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook_DbLayer.Repositories
 {
@@ -21,10 +17,15 @@ namespace PhoneBook_DbLayer.Repositories
 
         bool DeleteContact(int userId);
 
+        bool DeleteNumber(int userId);
+
+        bool DeleteNumber(Numbers number);
+
+        Numbers GetNumbersByUserId(int userId);
 
         void SendSMS();
 
-        IEnumerable<User> getUserByFilter(String pparam);
+        IEnumerable<User> getUserByFilter(string pparam);
 
         IEnumerable<ListUserViewModel> GetNumbersByUser(int userId);
 

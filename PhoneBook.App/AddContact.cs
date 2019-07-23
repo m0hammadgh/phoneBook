@@ -2,14 +2,7 @@
 using PhoneBook_DbLayer.Context;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValidationComponents;
 
@@ -38,7 +31,7 @@ namespace PhoneBook.App
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            if (BaseValidator.IsFormValid(this.components))
+            if (BaseValidator.IsFormValid(components))
             {
                 string imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcUser.ImageLocation);
                 string path = Application.StartupPath + "/Images/";
@@ -68,9 +61,9 @@ namespace PhoneBook.App
         private User CreateSampleuser()
 
         {
-            var count = getMobileNumbers().Count;
+            int count = getMobileNumbers().Count;
 
-            User user=new  User()
+            User user = new User()
             {
                 Address = tvAddress.Text,
                 CityCode = tvCityCode.Text,
@@ -82,37 +75,49 @@ namespace PhoneBook.App
                 BirthDate = dtPicker.Value,
                 ProfilePic = "noImage.jpg"
             };
+            Numbers mobileNumber = new Numbers() { number = tvMobileNumber.Text };
+            user.Numbers.Add(mobileNumber);
+            List<string> listNumbers = getMobileNumbers();
+            for (int i = 0; i < listNumbers.Count; i++)
+            {
+                string item = listNumbers[i];
+                Numbers number = new Numbers() { number = item };
+                user.Numbers.Add(number);
+            }
 
 
             return user;
 
 
         }
-        private User CreateSampleEditableUser() => new User
+        private User CreateSampleEditableUser()
         {
-            UserId = userId,
-            Address = tvAddress.Text,
-            CityCode = tvCityCode.Text,
-            Email = tvEmail.Text,
-            HomeNumber = tvHomePhone.Text,
-            Name = tvName.Text,
-            LastName = tvLastName.Text,
-            NationalCode = tvNationalCode.Text,
-            BirthDate = dtPicker.Value,
-            ProfilePic = "noImage.jpg"
+            return new User
+            {
+                UserId = userId,
+                Address = tvAddress.Text,
+                CityCode = tvCityCode.Text,
+                Email = tvEmail.Text,
+                HomeNumber = tvHomePhone.Text,
+                Name = tvName.Text,
+                LastName = tvLastName.Text,
+                NationalCode = tvNationalCode.Text,
+                BirthDate = dtPicker.Value,
+                ProfilePic = "noImage.jpg"
 
 
-        };
+            };
+        }
 
         private void AddContact_Load(object sender, EventArgs e)
         {
             if (userId != 0)
             {
-                this.Text = "ویرایش";
+                Text = "ویرایش";
                 btnSave.Text = "ثبت تغییرات";
                 using (ContextManager db = new ContextManager())
                 {
-                    var user = db.UserRepository.GetContactById(userId);
+                    User user = db.UserRepository.GetContactById(userId);
                     BindEditUserData(user);
                 }
 
@@ -132,20 +137,22 @@ namespace PhoneBook.App
 
         private void btnAddMobileNumber_Click(object sender, EventArgs e)
         {
-            TextBox textBox = new TextBox();
-            textBox.Name = "textBox" + tvId;
+            TextBox textBox = new TextBox
+            {
+                Name = "textBox" + tvId
+            };
             panelNumbers.Controls.Add(textBox);
             tvNumbersList.Add(textBox);
 
         }
 
-        public List<String> getMobileNumbers()
+        public List<string> getMobileNumbers()
         {
-            List<String> numbers = new List<string>();
-            for (int i1 = 0; i1 < tvNumbersList.Count; i1++)
+            List<string> numbers = new List<string>();
+            for (int i = 0; i < tvNumbersList.Count; i++)
             {
-                TextBox i = tvNumbersList[i1];
-                numbers.Add(i.Text);
+                TextBox t = tvNumbersList[i];
+                numbers.Add(t.Text);
             }
             return numbers;
         }
