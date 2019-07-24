@@ -85,7 +85,7 @@ namespace PhoneBook_DbLayer.Services
         public IEnumerable<ListUserViewModel> GetNumbersByUser(int userId)
         {
 
-
+           
             return db.Numbers.Where(u => u.userId.Equals(userId)).Select(u => new ListUserViewModel
             {
                 Numbers = u.number

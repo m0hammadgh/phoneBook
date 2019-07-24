@@ -1,4 +1,5 @@
-﻿using PhoneBook_DbLayer;
+﻿using PhoneBook.App.Forms;
+using PhoneBook_DbLayer;
 using PhoneBook_DbLayer.Context;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,14 @@ namespace PhoneBook.App
             {
                 db.UserRepository.DeleteNumber(number);
             }
+        }
+
+        private void tvSendSms_Click(object sender, EventArgs e)
+        {
+            String name = dgUsers.CurrentRow.Cells[1].Value.ToString() + " " + dgUsers.CurrentRow.Cells[2].Value.ToString();
+            SmsText smsFrm = new SmsText();
+            smsFrm.fullName = name;
+            smsFrm.ShowDialog();
         }
     }
 }

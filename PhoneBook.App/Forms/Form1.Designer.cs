@@ -36,6 +36,8 @@
             this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.brnEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSync = new System.Windows.Forms.ToolStripMenuItem();
+            this.tvShowMobileNumbers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tvSendSms = new System.Windows.Forms.ToolStripMenuItem();
             this.brnSearch = new System.Windows.Forms.ToolStripButton();
             this.tvSearchKeyWord = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -52,7 +54,6 @@
             this.contact_DBDataSet = new PhoneBook.App.Contact_DBDataSet();
             this.numbersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numbersTableAdapter = new PhoneBook.App.Contact_DBDataSetTableAdapters.NumbersTableAdapter();
-            this.tvShowMobileNumbers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contact_DBDataSet)).BeginInit();
@@ -81,7 +82,8 @@
             this.btnDelete,
             this.brnEdit,
             this.btnSync,
-            this.tvShowMobileNumbers});
+            this.tvShowMobileNumbers,
+            this.tvSendSms});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -116,6 +118,20 @@
             this.btnSync.Text = "به روز رسانی";
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
+            // tvShowMobileNumbers
+            // 
+            this.tvShowMobileNumbers.Name = "tvShowMobileNumbers";
+            this.tvShowMobileNumbers.Size = new System.Drawing.Size(197, 22);
+            this.tvShowMobileNumbers.Text = "نمایش شماره های موبایل";
+            this.tvShowMobileNumbers.Click += new System.EventHandler(this.tvShowMobileNumbers_Click);
+            // 
+            // tvSendSms
+            // 
+            this.tvSendSms.Name = "tvSendSms";
+            this.tvSendSms.Size = new System.Drawing.Size(197, 22);
+            this.tvSendSms.Text = "ارسال پیامک";
+            this.tvSendSms.Click += new System.EventHandler(this.tvSendSms_Click);
+            // 
             // brnSearch
             // 
             this.brnSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -129,7 +145,8 @@
             // 
             this.tvSearchKeyWord.Name = "tvSearchKeyWord";
             this.tvSearchKeyWord.Size = new System.Drawing.Size(200, 25);
-            this.tvSearchKeyWord.Text = "کلمه مورد جست و جو";
+            this.tvSearchKeyWord.Tag = "کلمه مورد جست و جو";
+            this.tvSearchKeyWord.ToolTipText = "کلمه مورد جست و جو";
             this.tvSearchKeyWord.TextChanged += new System.EventHandler(this.tvSearchKeyWord_TextChanged);
             // 
             // toolStripButton1
@@ -243,13 +260,6 @@
             // 
             this.numbersTableAdapter.ClearBeforeFill = true;
             // 
-            // tvShowMobileNumbers
-            // 
-            this.tvShowMobileNumbers.Name = "tvShowMobileNumbers";
-            this.tvShowMobileNumbers.Size = new System.Drawing.Size(197, 22);
-            this.tvShowMobileNumbers.Text = "نمایش شماره های موبایل";
-            this.tvShowMobileNumbers.Click += new System.EventHandler(this.tvShowMobileNumbers_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +308,7 @@
         private System.Windows.Forms.BindingSource numbersBindingSource;
         private Contact_DBDataSetTableAdapters.NumbersTableAdapter numbersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem tvShowMobileNumbers;
+        private System.Windows.Forms.ToolStripMenuItem tvSendSms;
     }
 }
 

@@ -2,6 +2,7 @@
 using PhoneBook_DbLayer.Context;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ValidationComponents;
@@ -20,11 +21,10 @@ namespace PhoneBook.App
 
         private void btnSelectPic_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
-
-                pcUser.ImageLocation = openFileDialog.FileName;
+                pcUser.ImageLocation = openFile.FileName;
             }
         }
 
@@ -35,6 +35,8 @@ namespace PhoneBook.App
             {
                 string imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcUser.ImageLocation);
                 string path = Application.StartupPath + "/Images/";
+
+
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -44,11 +46,11 @@ namespace PhoneBook.App
                 {
                     if (userId == 0)
                     {
-                        db.UserRepository.AddNewContact(CreateSampleuser());
+                        db.UserRepository.AddNewContact(CreateSampleuser(imageName));
                     }
                     else
                     {
-                        db.UserRepository.UpdateContact(CreateSampleEditableUser());
+                        db.UserRepository.UpdateContact(CreateSampleEditableUser(imageName));
                     }
                     db.saveChanges();
                 }
@@ -58,7 +60,7 @@ namespace PhoneBook.App
             }
         }
 
-        private User CreateSampleuser()
+        private User CreateSampleuser(string imageName)
 
         {
             int count = getMobileNumbers().Count;
@@ -73,7 +75,7 @@ namespace PhoneBook.App
                 LastName = tvLastName.Text,
                 NationalCode = tvNationalCode.Text,
                 BirthDate = dtPicker.Value,
-                ProfilePic = "noImage.jpg"
+                ProfilePic = imageName
             };
             Numbers mobileNumber = new Numbers() { number = tvMobileNumber.Text };
             user.Numbers.Add(mobileNumber);
@@ -90,7 +92,7 @@ namespace PhoneBook.App
 
 
         }
-        private User CreateSampleEditableUser()
+        private User CreateSampleEditableUser(string imageName)
         {
             return new User
             {
@@ -103,7 +105,7 @@ namespace PhoneBook.App
                 LastName = tvLastName.Text,
                 NationalCode = tvNationalCode.Text,
                 BirthDate = dtPicker.Value,
-                ProfilePic = "noImage.jpg"
+                ProfilePic = imageName
 
 
             };
@@ -133,6 +135,18 @@ namespace PhoneBook.App
             tvLastName.Text = user.LastName;
             tvName.Text = user.Name;
             tvNationalCode.Text = user.NationalCode;
+            pcUser.ImageLocation = Application.StartupPath + "/Images/" + user.ProfilePic;
+            foreach (var item in user.Numbers)
+            {
+
+                TextBox textBox = new TextBox
+                {
+                    Name = "textBox" + tvId,
+                    Text=item.number
+
+                };
+                panelNumbers.Controls.Add(textBox);
+            }
         }
 
         private void btnAddMobileNumber_Click(object sender, EventArgs e)

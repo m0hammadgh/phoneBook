@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddContact.cs">
+    <Compile Include="Forms\AddContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddContact.Designer.cs">
+    <Compile Include="Forms\AddContact.Designer.cs">
       <DependentUpon>AddContact.cs</DependentUpon>
     </Compile>
     <Compile Include="Contact_DBDataSet.Designer.cs">
@@ -63,18 +63,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Contact_DBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SmsText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SmsText.Designer.cs">
+      <DependentUpon>SmsText.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowMobileNumbers.cs">
+    <Compile Include="Forms\ShowMobileNumbers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowMobileNumbers.Designer.cs">
+    <Compile Include="Forms\ShowMobileNumbers.Designer.cs">
       <DependentUpon>ShowMobileNumbers.cs</DependentUpon>
     </Compile>
     <Compile Include="Validator\BaseValidator.cs">
@@ -107,11 +113,14 @@
     <Compile Include="Validator\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddContact.resx">
+    <EmbeddedResource Include="Forms\AddContact.resx">
       <DependentUpon>AddContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SmsText.resx">
+      <DependentUpon>SmsText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,7 +132,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ShowMobileNumbers.resx">
+    <EmbeddedResource Include="Forms\ShowMobileNumbers.resx">
       <DependentUpon>ShowMobileNumbers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Contact_DBDataSet.xsc">
