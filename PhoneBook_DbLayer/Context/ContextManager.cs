@@ -27,23 +27,6 @@ namespace PhoneBook_DbLayer.Context
             }
         }
 
-        private GenericRepository<User> _userRep;
-
-        public GenericRepository<User> UserRep
-        {
-            get
-            {
-                if (_userRep == null)
-                {
-                    _userRep = new GenericRepository<User>(db);
-                }
-                return _userRep;
-            }
-        }
-
-
-
-
 
         public void saveChanges()
         {

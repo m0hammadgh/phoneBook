@@ -92,9 +92,9 @@ namespace PhoneBook_DbLayer.Services
             }).ToList();
         }
 
-        public Numbers GetNumbersByUserId(int userId)
+        public List<Numbers> GetNumbersByUserId(int userId)
         {
-            return db.Numbers.Where(n => n.userId.Equals(userId));
+            return db.Numbers.Select(u => u).Where(u => u.userId.Equals(userId)).ToList();
         }
 
         public IEnumerable<User> getUserByFilter(string pparam)

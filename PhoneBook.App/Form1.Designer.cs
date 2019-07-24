@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -48,8 +49,14 @@
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CityCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contact_DBDataSet = new PhoneBook.App.Contact_DBDataSet();
+            this.numbersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.numbersTableAdapter = new PhoneBook.App.Contact_DBDataSetTableAdapters.NumbersTableAdapter();
+            this.tvShowMobileNumbers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contact_DBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numbersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -73,7 +80,8 @@
             this.btnAddUser,
             this.btnDelete,
             this.brnEdit,
-            this.btnSync});
+            this.btnSync,
+            this.tvShowMobileNumbers});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -83,28 +91,28 @@
             // btnAddUser
             // 
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(180, 22);
+            this.btnAddUser.Size = new System.Drawing.Size(197, 22);
             this.btnAddUser.Text = "افزودن مخاطب";
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(180, 22);
+            this.btnDelete.Size = new System.Drawing.Size(197, 22);
             this.btnDelete.Text = "حذف مخاطب";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // brnEdit
             // 
             this.brnEdit.Name = "brnEdit";
-            this.brnEdit.Size = new System.Drawing.Size(180, 22);
+            this.brnEdit.Size = new System.Drawing.Size(197, 22);
             this.brnEdit.Text = "ویرایش مخاطب";
             this.brnEdit.Click += new System.EventHandler(this.brnEdit_Click);
             // 
             // btnSync
             // 
             this.btnSync.Name = "btnSync";
-            this.btnSync.Size = new System.Drawing.Size(180, 22);
+            this.btnSync.Size = new System.Drawing.Size(197, 22);
             this.btnSync.Text = "به روز رسانی";
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
@@ -221,6 +229,27 @@
             this.CityCode.Name = "CityCode";
             this.CityCode.ReadOnly = true;
             // 
+            // contact_DBDataSet
+            // 
+            this.contact_DBDataSet.DataSetName = "Contact_DBDataSet";
+            this.contact_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // numbersBindingSource
+            // 
+            this.numbersBindingSource.DataMember = "Numbers";
+            this.numbersBindingSource.DataSource = this.contact_DBDataSet;
+            // 
+            // numbersTableAdapter
+            // 
+            this.numbersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tvShowMobileNumbers
+            // 
+            this.tvShowMobileNumbers.Name = "tvShowMobileNumbers";
+            this.tvShowMobileNumbers.Size = new System.Drawing.Size(197, 22);
+            this.tvShowMobileNumbers.Text = "نمایش شماره های موبایل";
+            this.tvShowMobileNumbers.Click += new System.EventHandler(this.tvShowMobileNumbers_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +266,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contact_DBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numbersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,6 +294,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn CityCode;
+        private Contact_DBDataSet contact_DBDataSet;
+        private System.Windows.Forms.BindingSource numbersBindingSource;
+        private Contact_DBDataSetTableAdapters.NumbersTableAdapter numbersTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem tvShowMobileNumbers;
     }
 }
 

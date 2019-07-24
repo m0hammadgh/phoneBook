@@ -21,7 +21,7 @@ namespace PhoneBook_DbLayer.Repositories
 
         bool DeleteNumber(Numbers number);
 
-        Numbers GetNumbersByUserId(int userId);
+        List<Numbers> GetNumbersByUserId(int userId);
 
         void SendSMS();
 

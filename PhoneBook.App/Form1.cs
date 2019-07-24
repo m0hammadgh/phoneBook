@@ -1,4 +1,5 @@
-﻿using PhoneBook_DbLayer.Context;
+﻿using PhoneBook_DbLayer;
+using PhoneBook_DbLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,10 @@ namespace PhoneBook.App
             using (ContextManager db = new ContextManager())
             {
                 dgUsers.AutoGenerateColumns = false;
+
                 dgUsers.DataSource = db.UserRepository.getUserByFilter(tvSearchKeyWord.Text);
+
+
             }
         }
 
@@ -59,8 +63,7 @@ namespace PhoneBook.App
                     int cutomerId = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
                     using (ContextManager db = new ContextManager())
                     {
-                       
-
+                        DeleteRelateMobileNumbers(db.UserRepository.GetNumbersByUserId(cutomerId), db);
                         db.UserRepository.DeleteContact(cutomerId);
                         db.saveChanges();
                         BindGrid();
@@ -99,6 +102,23 @@ namespace PhoneBook.App
             else
             {
                 RtlMessageBox.Show("رکورد مورد نظر را انتخاب کنید");
+            }
+        }
+
+        private void tvShowMobileNumbers_Click(object sender, EventArgs e)
+        {
+            int userid = int.Parse(dgUsers.CurrentRow.Cells[0].Value.ToString());
+            ShowMobileNumbers numbers = new ShowMobileNumbers();
+            numbers.userId = userid;
+            numbers.ShowDialog();
+
+        }
+
+        private void DeleteRelateMobileNumbers(List<Numbers> numbers, ContextManager db)
+        {
+            foreach (Numbers number in numbers)
+            {
+                db.UserRepository.DeleteNumber(number);
             }
         }
     }
